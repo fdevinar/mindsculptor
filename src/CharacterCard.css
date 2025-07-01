@@ -1,0 +1,21 @@
+.character-card {
+  border: 2px solid;
+  border-radius: 12px;
+  padding: 1rem;
+  background-color: #1a1a2e;
+  color: #ccc;
+  max-width: 200px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.6);  
+  &.noble {
+    background-color: forestgreen;
+    color: black;
+  }
+  &.tough {
+    background-color: crimson;
+    color: black;
+  }
+  &.fiend {
+    background-color: black;
+    color: whitesmoke;
+  }
+}
