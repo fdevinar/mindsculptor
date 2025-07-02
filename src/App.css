@@ -19,8 +19,14 @@
   color: var(--main-blue);
 }
 
+button {
+  margin-bottom: 24px;
+}
+
 .character-cards-wrapper {
   display: flex;
   gap: 12px;
-  justify-content: space-between;
+  justify-content: start;
+  flex-wrap: wrap;
+  max-width: 800px;
 }
