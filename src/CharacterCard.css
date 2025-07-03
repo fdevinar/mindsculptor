@@ -6,17 +6,25 @@
   color: #ccc;
   height: 200px;
   width: 200px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.6);  
-  &.noble {
+  box-shadow: 0 0 10px rgba(0,0,0,0.6);    
+  &.harmonist {
     background-color: forestgreen;
     color: black;
   }
-  &.tough {
-    background-color: crimson;
+  &.tidekeeper {
+    background-color: grey;
     color: black;
   }
-  &.fiend {
-    background-color: black;
+  &.pactbound {
+    background-color: navy;
+    color: whitesmoke;
+  }
+  &.riftspawn {
+    background-color: crimson;
+    color: whitesmoke;
+  }
+  &.unknown {
+    background-color: darkmagenta;
     color: whitesmoke;
   }
 }
