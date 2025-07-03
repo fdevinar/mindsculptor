@@ -1,0 +1,7 @@
+.character-cards-wrapper {
+  display: flex;
+  gap: 12px;
+  justify-content: start;
+  flex-wrap: wrap;
+  max-width: 800px;
+}

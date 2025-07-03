@@ -9,7 +9,7 @@ export default function CharacterForm({ onAddCharacter, onClose }) {
     
     function handleSubmit(e) {
         e.preventDefault();
-        const newChar = {name:charName, bio:charBio, variant:charVariant};
+        const newChar = {id: crypto.randomUUID(), name:charName, bio:charBio, variant:charVariant};
         onAddCharacter(newChar); 
         
         setCharName("");
