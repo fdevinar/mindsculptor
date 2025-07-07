@@ -18,6 +18,11 @@ function App() {
     setFormVisibility(false);
   }
 
+  function handleCardClick(char) {
+    alert('handle it baby');
+    console.log(char);
+  }
+
   return (
     <>
       <div className="main-logo">
@@ -30,8 +35,7 @@ function App() {
         <CharacterForm onAddCharacter={addCharacter} onClose={closeForm}/>
       )}
       
-
-      <CharacterList characters={characters} />
+      <CharacterList characters={characters} onCardClick={() => {handleCardClick(char)} } />
 
     </>
   )

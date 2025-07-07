@@ -4,7 +4,7 @@
   padding: 1rem;
   background-color: #1a1a2e;
   color: #ccc;
-  height: 200px;
+  height: 110px;
   width: 200px;
   box-shadow: 0 0 10px rgba(0,0,0,0.6);    
   &.harmonist {

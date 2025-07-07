@@ -42,9 +42,7 @@ export default function CharacterForm({ onAddCharacter, onClose }) {
                         <option value="unknown">Unknown</option>
                     </select>
                 </div>
-
                 
-
                 <input type="submit" value="Create Character" />            
             </form>               
         </div>        
