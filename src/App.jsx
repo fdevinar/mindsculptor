@@ -20,7 +20,7 @@ function App() {
 
   function handleCardClick(char) {
     alert('handle it baby');
-    console.log(char);
+    alert(char.name);
   }
 
   return (
@@ -35,7 +35,7 @@ function App() {
         <CharacterForm onAddCharacter={addCharacter} onClose={closeForm}/>
       )}
       
-      <CharacterList characters={characters} onCardClick={() => {handleCardClick(char)} } />
+      <CharacterList characters={characters} onCardClick={handleCardClick} />
 
     </>
   )

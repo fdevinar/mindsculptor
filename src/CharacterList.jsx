@@ -7,13 +7,6 @@ export default function CharacterList({ characters, onCardClick }) {
     const [variantFilter, setVariantFilter] = useState('');        
     const filteredCharacters = variantFilter ? characters.filter(char => char.variant === variantFilter) : characters;
 
-    // function onCardClick( char ) {
-    //     console.log(char.name);
-    //     console.log(char.bio);
-    //     console.log(char.variant);
-    //     console.log(char.id);
-    // }
-
     return (
         <>
         <div className="filter-bar">
@@ -34,11 +27,8 @@ export default function CharacterList({ characters, onCardClick }) {
                 bio={char.bio}
                 variant={char.variant}
                 id={char.id}
-                onCardClick={() => onCardClick(
-                    { name: char.name,
-                      bio: char.bio,
-                      variant: char.variant,
-                      id:char.id })} />
+                onCardClick={() => onCardClick(char)}
+            />
             )
         )}
         </div>
