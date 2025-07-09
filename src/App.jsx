@@ -7,6 +7,9 @@ import CharacterList from './CharacterList';
 
 function App() {
   const [isFormVisible, setFormVisibility] = useState(false);
+  const [isEditing, setEditing] = useState(false);
+  const [characterToEdit, setCharacterToEdit] = useState(null);
+
   const [characters, setCharacters] = useState (dummyCharacters);
 
   function addCharacter(newChar) {
@@ -19,9 +22,14 @@ function App() {
   }
 
   function handleCardClick(char) {
-    alert('handle it baby');
-    alert(char.name);
+
+    setFormVisibility(!isFormVisible);
+    setEditing(true);  
+    setCharacterToEdit(char);
+
   }
+
+
 
   return (
     <>
@@ -32,7 +40,19 @@ function App() {
 
       <button onClick={() => setFormVisibility(!isFormVisible)}>Display character creation form</button>
       {isFormVisible && (
-        <CharacterForm onAddCharacter={addCharacter} onClose={closeForm}/>
+        <CharacterForm 
+        onClose={closeForm}
+        {...isEditing ? 
+          {
+            // onEditCharacter: editCharacter,
+            characterToEdit: characterToEdit
+          }
+          :
+          {
+            onAddCharacter: addCharacter,
+          }
+        } 
+        />
       )}
       
       <CharacterList characters={characters} onCardClick={handleCardClick} />

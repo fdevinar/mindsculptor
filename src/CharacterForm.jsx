@@ -1,12 +1,12 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './CharacterForm.css';
 
-export default function CharacterForm({ onAddCharacter, onClose }) {
+export default function CharacterForm({ onAddCharacter, onClose, characterToEdit }) {
     
     const [charName, setCharName] = useState("");
     const [charBio, setCharBio] = useState("");
     const [charVariant, setCharVariant] = useState("");
-    
+
     function handleSubmit(e) {
         e.preventDefault();
         const newChar = {id: crypto.randomUUID(), name:charName, bio:charBio, variant:charVariant};
@@ -16,9 +16,18 @@ export default function CharacterForm({ onAddCharacter, onClose }) {
         setCharBio("");
         setCharVariant("");
     }
+
+    useEffect(() => {
+        if (characterToEdit) {
+            setCharName(characterToEdit.name);
+            setCharBio(characterToEdit.bio);
+            setCharVariant(characterToEdit.variant);
+        }
+    },[characterToEdit]);
+
     
     return (        
-        <div className="form-wrapper">
+        <div className="form-wrapper">            
             <button onClick={onClose}>X</button>
             <form onSubmit={handleSubmit}>
                 <div className="form-item">
@@ -41,9 +50,9 @@ export default function CharacterForm({ onAddCharacter, onClose }) {
                         <option value="riftspawn">Riftspawn</option>
                         <option value="unknown">Unknown</option>
                     </select>
-                </div>
-                
-                <input type="submit" value="Create Character" />            
+                </div>                
+                <input type="submit" value="Submit" />
+                <p>Mode: { characterToEdit ? 'edit' : 'create' } </p>
             </form>               
         </div>        
     )   
