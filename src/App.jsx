@@ -9,27 +9,31 @@ function App() {
   const [isFormVisible, setFormVisibility] = useState(false);
   const [isEditing, setEditing] = useState(false);
   const [characterToEdit, setCharacterToEdit] = useState(null);
-
   const [characters, setCharacters] = useState (dummyCharacters);
 
   function addCharacter(newChar) {
     setCharacters(prev=> [...prev, newChar]);
     setFormVisibility(false);
   }
-
   function closeForm() {
     setFormVisibility(false);
   }
-
   function handleCardClick(char) {
-
     setFormVisibility(!isFormVisible);
     setEditing(true);  
     setCharacterToEdit(char);
-
   }
-
-
+  function editCharacter(editChar) {
+    const updatedCharacters = characters.map(char =>
+      char.id === editChar.id ?
+      { ...char, name: editChar.name, bio: editChar.bio, variant: editChar.variant }
+      : char
+    )
+    setCharacters(updatedCharacters);
+    setFormVisibility(false);
+  }
+  
+  
 
   return (
     <>
@@ -44,7 +48,7 @@ function App() {
         onClose={closeForm}
         {...isEditing ? 
           {
-            // onEditCharacter: editCharacter,
+            onEditCharacter: editCharacter,
             characterToEdit: characterToEdit
           }
           :

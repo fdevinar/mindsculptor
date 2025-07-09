@@ -1,17 +1,24 @@
 import { useState, useEffect } from 'react'
 import './CharacterForm.css';
 
-export default function CharacterForm({ onAddCharacter, onClose, characterToEdit }) {
+export default function CharacterForm({ onAddCharacter, onClose, characterToEdit, onEditCharacter }) {
     
     const [charName, setCharName] = useState("");
     const [charBio, setCharBio] = useState("");
     const [charVariant, setCharVariant] = useState("");
 
     function handleSubmit(e) {
-        e.preventDefault();
-        const newChar = {id: crypto.randomUUID(), name:charName, bio:charBio, variant:charVariant};
-        onAddCharacter(newChar); 
-        
+        e.preventDefault();                                
+        // EDIT MODE
+        if (characterToEdit) {
+            const editChar = {id: characterToEdit.id, name:charName, bio:charBio, variant:charVariant};
+            onEditCharacter(editChar);
+        }        
+        // CREATE MODE
+        else {
+            const newChar = {id: crypto.randomUUID(), name:charName, bio:charBio, variant:charVariant};        
+            onAddCharacter(newChar);
+        }
         setCharName("");
         setCharBio("");
         setCharVariant("");
