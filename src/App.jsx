@@ -32,8 +32,10 @@ function App() {
     setCharacters(updatedCharacters);
     setFormVisibility(false);
   }
-  
-  
+  function deleteChar(deleteChar) {
+    const deletedCharacters = characters.filter(char => char.id !== deleteChar.id);
+    setCharacters(deletedCharacters);    
+  }
 
   return (
     <>
@@ -46,6 +48,7 @@ function App() {
       {isFormVisible && (
         <CharacterForm 
         onClose={closeForm}
+        onDelete={deleteChar}
         {...isEditing ? 
           {
             onEditCharacter: editCharacter,

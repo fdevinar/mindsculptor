@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import './CharacterForm.css';
 
-export default function CharacterForm({ onAddCharacter, onClose, characterToEdit, onEditCharacter }) {
+export default function CharacterForm({ onAddCharacter, onClose, characterToEdit, onEditCharacter, onDelete }) {
     
     const [charName, setCharName] = useState("");
     const [charBio, setCharBio] = useState("");
@@ -60,6 +60,8 @@ export default function CharacterForm({ onAddCharacter, onClose, characterToEdit
                 </div>                
                 <input type="submit" value="Submit" />
                 <p>Mode: { characterToEdit ? 'edit' : 'create' } </p>
+                { characterToEdit ? <button className='delete-btn' onClick={ () => onDelete(characterToEdit) }>Delete</button> : ''}
+                
             </form>               
         </div>        
     )   

@@ -18,3 +18,7 @@
     gap: 24px;
     margin: 20px auto;
 }
+
+.delete-btn {
+    margin-top: 12px;    
+}
