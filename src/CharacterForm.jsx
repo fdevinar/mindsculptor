@@ -60,9 +60,8 @@ export default function CharacterForm({ onAddCharacter, onClose, characterToEdit
                 </div>                
                 <input type="submit" value="Submit" />
                 <p>Mode: { characterToEdit ? 'edit' : 'create' } </p>
-                { characterToEdit ? <button className='delete-btn' onClick={ () => onDelete(characterToEdit) }>Delete</button> : ''}
-                
             </form>               
+                { characterToEdit ? <button type="button" className='delete-btn' onClick={ () => onDelete(characterToEdit) }>Delete</button> : ''}                
         </div>        
     )   
 
