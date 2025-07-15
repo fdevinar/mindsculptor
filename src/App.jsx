@@ -12,12 +12,14 @@ function App() {
   const [characterToEdit, setCharacterToEdit] = useState(null);
   const [characters, setCharacters] = useState (dummyCharacters);
   const [toastMessage, setToastMessage] = useState(null);
+  const [toastType, setToastType] = useState(null);
   const [isToastVisible, setToastVisibility] = useState(false);
 
   function addCharacter(newChar) {
     setCharacters(prev=> [...prev, newChar]);
     setFormVisibility(false);
     setToastMessage("Character created");
+    setToastType('create');
     setToastVisibility(true);
   }
   function closeForm() {
@@ -37,6 +39,7 @@ function App() {
     setCharacters(updatedCharacters);
     setFormVisibility(false);    
     setToastMessage("Character edited");
+    setToastType('edit');
     setToastVisibility(true);
   }
   function deleteChar(deleteChar) {
@@ -44,6 +47,7 @@ function App() {
     setCharacters(deletedCharacters);     
     setFormVisibility(false);    
     setToastMessage("Character deleted");
+    setToastType('delete');
     setToastVisibility(true);
   }
 
@@ -52,7 +56,7 @@ function App() {
       setTimeout(function() { 
         setToastVisibility(false);        
        }, 
-      3000);
+      2000);
 
     }
   },[toastMessage]);
@@ -64,9 +68,12 @@ function App() {
         <h1>mindsculptor</h1>  
       </div>
 
-      {isToastVisible && (        
-        <Toast message={ toastMessage } />
-      )}
+            
+      <Toast
+        message={toastMessage}
+        type={`${toastType} ${isToastVisible ? 'visible' : 'hidden'}`}
+      />
+      
 
       <button onClick={() => setFormVisibility(!isFormVisible)}>Display character creation form</button>
       {isFormVisible && (
