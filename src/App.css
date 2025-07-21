@@ -33,6 +33,7 @@ button {
   pointer-events: none;
   right: 20%;
   top: 20%;
+  height: fit-content;
   transition: opacity 333ms ease-in-out;
   padding: 24px;
   color: #000;
@@ -52,7 +53,24 @@ button {
     pointer-events: auto;
   }
 }
+.toast h3 {
+  margin: 0;
+}
+.progress-bar-wrapper {
+  width: 100%;
+  background-color: grey;
+  height: 20px;  
+}
+.progress-bar-wrapper .filler {
+  height: 20px;
+  background-color: black;
+  width: 0%;
+  transition: all 2000ms;
+  &.active {
+    width: 100%;
+  }
 
+}
   
 
 

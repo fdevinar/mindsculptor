@@ -14,10 +14,12 @@ function App() {
   const [toastMessage, setToastMessage] = useState(null);
   const [toastType, setToastType] = useState(null);
   const [isToastVisible, setToastVisibility] = useState(false);
+  // const TOAST_DURATION = 2000;
 
   function addCharacter(newChar) {
     setCharacters(prev=> [...prev, newChar]);
     setFormVisibility(false);
+    // setToastMessage(null);
     setToastMessage("Character created");
     setToastType('create');
     setToastVisibility(true);
@@ -38,6 +40,7 @@ function App() {
     )
     setCharacters(updatedCharacters);
     setFormVisibility(false);    
+    // setToastMessage(null);
     setToastMessage("Character edited");
     setToastType('edit');
     setToastVisibility(true);
@@ -46,6 +49,7 @@ function App() {
     const deletedCharacters = characters.filter(char => char.id !== deleteChar.id);
     setCharacters(deletedCharacters);     
     setFormVisibility(false);    
+    // setToastMessage(null);
     setToastMessage("Character deleted");
     setToastType('delete');
     setToastVisibility(true);
@@ -72,6 +76,7 @@ function App() {
       <Toast
         message={toastMessage}
         type={`${toastType} ${isToastVisible ? 'visible' : 'hidden'}`}
+        // duration={TOAST_DURATION}
       />
       
 
