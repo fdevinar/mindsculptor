@@ -56,6 +56,18 @@ button {
 .toast h3 {
   margin: 0;
 }
+
+.toast {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease-in-out;
+}
+.toast.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
 .progress-bar-wrapper {
   width: 100%;
   background-color: grey;
@@ -69,7 +81,6 @@ button {
   &.active {
     width: 100%;
   }
-
 }
   
 

@@ -12,17 +12,16 @@ function App() {
   const [characterToEdit, setCharacterToEdit] = useState(null);
   const [characters, setCharacters] = useState (dummyCharacters);
   const [toastMessage, setToastMessage] = useState(null);
-  const [toastType, setToastType] = useState(null);
-  const [isToastVisible, setToastVisibility] = useState(false);
+  const [toastTrigger, setToastTrigger] = useState(null);
+  const [toastType, setToastType] = useState(null);  
   // const TOAST_DURATION = 2000;
 
   function addCharacter(newChar) {
     setCharacters(prev=> [...prev, newChar]);
-    setFormVisibility(false);
-    // setToastMessage(null);
+    setFormVisibility(false);    
+    setToastTrigger(Date.now());
     setToastMessage("Character created");
     setToastType('create');
-    setToastVisibility(true);
   }
   function closeForm() {
     setFormVisibility(false);
@@ -40,30 +39,18 @@ function App() {
     )
     setCharacters(updatedCharacters);
     setFormVisibility(false);    
-    // setToastMessage(null);
     setToastMessage("Character edited");
-    setToastType('edit');
-    setToastVisibility(true);
+    setToastType("edit");
+    setToastTrigger(Date.now());    
   }
   function deleteChar(deleteChar) {
     const deletedCharacters = characters.filter(char => char.id !== deleteChar.id);
     setCharacters(deletedCharacters);     
-    setFormVisibility(false);    
-    // setToastMessage(null);
+    setFormVisibility(false);        
+    setToastTrigger(Date.now());
     setToastMessage("Character deleted");
     setToastType('delete');
-    setToastVisibility(true);
   }
-
-  useEffect(() => {
-    if (toastMessage) {      
-      setTimeout(function() { 
-        setToastVisibility(false);        
-       }, 
-      2000);
-
-    }
-  },[toastMessage]);
 
   return (
     <>
@@ -75,8 +62,8 @@ function App() {
             
       <Toast
         message={toastMessage}
-        type={`${toastType} ${isToastVisible ? 'visible' : 'hidden'}`}
-        // duration={TOAST_DURATION}
+        type={toastType}
+        trigger={toastTrigger}
       />
       
 
