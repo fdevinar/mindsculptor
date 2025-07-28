@@ -14,7 +14,6 @@ function App() {
   const [toastMessage, setToastMessage] = useState(null);
   const [toastTrigger, setToastTrigger] = useState(null);
   const [toastType, setToastType] = useState(null);  
-  // const TOAST_DURATION = 2000;
 
   function addCharacter(newChar) {
     setCharacters(prev=> [...prev, newChar]);
@@ -66,8 +65,12 @@ function App() {
         trigger={toastTrigger}
       />
       
+      <button onClick={() => {
+        setFormVisibility(!isFormVisible);
+        setEditing(false);
+      }}>Create new character
+      </button>
 
-      <button onClick={() => setFormVisibility(!isFormVisible)}>Display character creation form</button>
       {isFormVisible && (
         <CharacterForm 
         onClose={closeForm}

@@ -16,7 +16,7 @@ export default function Toast({ message, type, trigger }) {
       const hide = setTimeout(() => {
         setIsVisible(false);
         setProgressActive(null);
-      }, 1800);
+      }, 2000);
 
       return () => {
         clearTimeout(anim);

@@ -60,7 +60,7 @@ button {
 .toast {
   opacity: 0;
   pointer-events: none;
-  transition: opacity 300ms ease-in-out;
+  transition: opacity 150ms ease-in-out;
 }
 .toast.visible {
   opacity: 1;

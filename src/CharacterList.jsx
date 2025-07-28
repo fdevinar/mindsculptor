@@ -19,8 +19,11 @@ export default function CharacterList({ characters, onCardClick }) {
                 <option value="unknown">Unknown</option>
             </select>            
         </div>
-        <div className="characters-wrapper">                        
-            {filteredCharacters.map((char) => (
+        <div className="characters-wrapper"> 
+            {filteredCharacters
+            // SORT BY VARIANT
+            .sort((a,b) => a.variant.localeCompare(b.variant))
+            .map((char) => (
                 <CharacterCard
                 key={char.id}
                 name={char.name}
