@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import mindLogo from './assets/logo.png'
 import './App.css'
 import CharacterForm from './CharacterForm'
